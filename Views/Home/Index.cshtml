@@ -1,0 +1,104 @@
+@model IEnumerable<MovieReviewSite.Models.Movie>
+
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+
+<section class="bg-dark text-light text-center py-5" style="background: linear-gradient(135deg, #141e30, #243b55);">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">🎬 Welcome to MovieReviewSite</h1>
+        <p class="lead mb-4">Discover, review, and share your favorite movies with the world.</p>
+
+        <div class="d-flex justify-content-center gap-3">
+            <a href="/Movies" class="btn btn-primary btn-lg px-4">Browse Movies</a>
+            <a href="/Account/Register" class="btn btn-outline-light btn-lg px-4">Join Now</a>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5">
+    <div class="container text-center">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body">
+                        <i class="bi bi-star-fill text-warning display-5"></i>
+                        <h5 class="card-title mt-3">Rate Movies</h5>
+                        <p class="card-text text-muted">
+                            Share your opinion and rate the movies you watch to help others choose the best.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body">
+                        <i class="bi bi-pencil-square text-primary display-5"></i>
+                        <h5 class="card-title mt-3">Write Reviews</h5>
+                        <p class="card-text text-muted">
+                            Express your thoughts with detailed reviews and insights about your favorite films.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body">
+                        <i class="bi bi-people text-success display-5"></i>
+                        <h5 class="card-title mt-3">Connect with Movie Fans</h5>
+                        <p class="card-text text-muted">
+                            Join a vibrant community of movie lovers and discover trending reviews.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-light">
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">🎬 Trending Movies</h2>
+
+        @if (Model != null && Model.Any())
+        {
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var movie in Model.Take(6))
+                {
+                    <div class="col">
+                        <div class="card shadow-sm border-0">
+                            <img src="@(!string.IsNullOrEmpty(movie.PosterUrl) ? movie.PosterUrl : "https://via.placeholder.com/400x250?text=No+Poster")"
+                                class="card-img-top" alt="@movie.Title" />
+                            <div class="card-body">
+                                <h5 class="card-title">@movie.Title</h5>
+                                <p class="card-text">@movie.Description.Substring(0, Math.Min(100, movie.Description.Length))...
+                                </p>
+                                <a href="/Movies/Details/@movie.Id" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-center text-muted mt-4">No movies available yet.</p>
+        }
+    </div>
+</section>
+
+
+<section class="text-center py-5" style="background: linear-gradient(135deg, #243b55, #141e30); color: white;">
+    <div class="container">
+        <h3 class="fw-bold mb-3">Ready to share your thoughts?</h3>
+        <p class="mb-4">Join MovieReviewSite and become part of a growing movie community!</p>
+        <a href="/Account/Register" class="btn btn-warning btn-lg px-4">Create an Account</a>
+    </div>
+</section>
