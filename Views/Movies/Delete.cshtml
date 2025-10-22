@@ -1,0 +1,21 @@
+@model Movie
+
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+
+<div class="container mt-5">
+    <div class="card border-danger shadow-sm rounded-4">
+        <div class="card-header bg-danger text-white text-center">
+            <h3><i class="bi bi-trash"></i> Delete Movie</h3>
+        </div>
+        <div class="card-body text-center">
+            <p class="fs-5">Are you sure you want to delete <strong>@Model.Title</strong>?</p>
+            <form asp-action="DeleteConfirmed" method="post">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger me-2"><i class="bi bi-check-circle"></i> Yes, Delete</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
