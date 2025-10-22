@@ -1,0 +1,42 @@
+# Build and runtime folders
+bin/
+obj/
+logs/
+*.log
+
+# User-specific files
+*.user
+*.suo
+.vs/
+.vscode/
+
+# Publish outputs
+**/publish/
+**/PublishProfiles/
+
+# Environment and config secrets
+.env
+appsettings.Development.json
+appsettings.Local.json
+
+# Database or local data
+*.db
+*.mdf
+*.ldf
+
+# Migration cache (optional)
+Migrations/obj/
+Migrations/bin/
+
+# Uploaded or static assets (user files)
+wwwroot/uploads/
+wwwroot/images/
+wwwroot/posters/
+wwwroot/profile_pics/
+
+# OS / IDE junk
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+Properties
