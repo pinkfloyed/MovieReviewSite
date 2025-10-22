@@ -1,0 +1,25 @@
+@model MovieReviewSite.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="container mt-3">
+    <div class="card shadow-lg border-0 rounded-4 p-2">
+        <div class="d-flex align-items-center mb-3">
+            <i class="fa-solid fa-user-circle fa-3x text-primary me-3"></i>
+            <h3 class="mb-0">@Model.FullName's Profile</h3>
+        </div>
+        <hr />
+
+        <div class="mb-3">
+            <strong>FullName:</strong> @Model.FullName
+        </div>
+
+        <div class="mb-3">
+            <strong>Email:</strong> @Model.Email
+        </div>
+
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">Back to Home</a>
+    </div>
+</div>
